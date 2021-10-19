@@ -96,6 +96,10 @@ impl<'a, 'b, T: TypeArray> AutoArray<'a, 'b, T> {
     pub fn commit(&self) -> Result<()> {
         self.release_array_elements(sys::JNI_COMMIT)
     }
+    
+    pub fn release(&self) -> Result<()> {
+        self.release_array_elements(sys::JNI_ABORT)
+    }
 
     fn release_array_elements(&self, mode: i32) -> Result<()> {
         T::release(self.env, self.obj, self.ptr, mode)
