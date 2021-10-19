@@ -74,7 +74,7 @@ pub struct AutoArray<'a: 'b, 'b, T: TypeArray> {
 
 impl<'a, 'b, T: TypeArray> AutoArray<'a, 'b, T> {
     pub(crate) fn new(env: &'b JNIEnv<'a>, obj: JObject<'a>, mode: ReleaseMode) -> Result<Self> {
-        let mut is_copy: jboolean = 0xff;
+        let mut is_copy: jboolean = 0x00;
         Ok(AutoArray {
             obj,
             ptr: {
